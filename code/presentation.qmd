@@ -1,0 +1,41 @@
+---
+title: "Projections of governance in the SSPs (2022 update)"
+author: "Marina Andrijevic"
+format: pptx
+editor: visual
+---
+
+## Introduction
+
+Original motivation:
+
+## Bullets
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+## Code
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+
+
+
+ggplot() +
+  geom_point(dat = filter(observed.yr, year < 2021 & countrycode %in% sample), aes(x = year, y = governance, color = scenario), size = 2) +
+  geom_line(dat = filter(test, year >= 2015 & countrycode %in% sample), aes(x = year, y = gov, color = scenario), size = 1.2) +
+  geom_line(dat = filter(test, year >= 2015 & countrycode %in% sample), aes(x = year, y = gov.const.fe, color = scenario), size = 1.2, linetype = 'dashed') +
+  facet_wrap(~countrycode) +
+  ylim(0,1) +
+  labs(x = 'Year', y = 'WGI', title = 'Projections of governance by SSPs') + # Change the title based on the variable shown
+  theme(legend.position = "bottom") +
+  theme(panel.background = element_rect(fill = "#F6F7F6"),
+        panel.border = element_blank(),
+        panel.grid.major = element_blank()) +
+  scale_color_manual(values = c("SSP1" = "#00BA38", "SSP2" = "#F564E3", 
+                                'SSP3' = '#FF8C00', 'SSP4' = '#00BFC4', 'SSP5' = '#AED602',"Observed" = "#F8766D")) 
+
+```
